@@ -5,7 +5,7 @@ import java.io.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-@WebServlet(name = "helloServlet", value = "/hello-servlet")
+@WebServlet(name = "home", value = "/home")
 public class HelloServlet extends HttpServlet {
     private String message;
 
@@ -14,13 +14,24 @@ public class HelloServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html");
+        System.out.println("User Agent:" + request.getHeader("User-Agent"));
+        public String getParameter(String Username, String Password)
+        System.out.println(request.getParameter("Usename"));
+        System.out.println(request.getParameter("Password"));
 
-        // Hello
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<h1>" + message + "</h1>");
-        out.println("</body></html>");
+        if (Usename == "gino" and Password == "pasquale"){
+            response.setContentType("text/html");
+            PrintWriter oggetto = response.getWriter();
+            oggetto.println("<html><body>");
+            oggetto.println("<h1>" + Benvenuto + "</h1>");
+            oggetto.println("</body></html>");
+        } else{
+            HttpSession session = request.getSession(true);
+            session.setAttribute("Errore", 'Errore credenziali Sbagliate';
+            response.sendRedirect("/Errore");
+        }
+
+
     }
 
     public void destroy() {
