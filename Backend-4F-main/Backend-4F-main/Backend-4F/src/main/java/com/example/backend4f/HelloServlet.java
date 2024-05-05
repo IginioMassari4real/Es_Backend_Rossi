@@ -34,6 +34,17 @@ public class HelloServlet extends HttpServlet {
 
     }
 
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    System.out.println('host:'+request.getHeader('host'));
+        System.out.println('accept_encoding:'+request.getHeader('accept_encoding'));
+        System.out.println('if_none_match:'+request.getHeader('if_none_match'));
+        response.setContentType('text/plain');
+        printWriter Stampa=response.getWriter();
+        Stampa.println('buongiorno Galvani!');
+
+
+    }
+
     public void destroy() {
     }
 }
