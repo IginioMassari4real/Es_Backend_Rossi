@@ -5,46 +5,40 @@ import java.io.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-@WebServlet(name = "home", value = "/home")
+@WebServlet(name = "home", value = "/home") //collegare la classe all'url
 public class HelloServlet extends HttpServlet {
-    private String message;
 
-    public void init() {
-        message = "Hello World!";
+    @Override
+    public void init (){
+
+    }
+    @Override
+    public void destroy(){
+
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        System.out.println("User Agent:" + request.getHeader("User-Agent"));
-        public String getParameter(String Username, String Password)
-        System.out.println(request.getParameter("Usename"));
-        System.out.println(request.getParameter("Password"));
+        System.out.println(request.Header(name:'User-Agent'));
+        String username = request.getParameter(name:'Username');
+        String password = request.getParameter(name:'Password');
 
-        if (Usename == "gino" and Password == "pasquale"){
-            response.setContentType("text/html");
-            PrintWriter oggetto = response.getWriter();
-            oggetto.println("<html><body>");
-            oggetto.println("<h1>" + Benvenuto + "</h1>");
-            oggetto.println("</body></html>");
-        } else{
-            HttpSession session = request.getSession(true);
-            session.setAttribute("Errore", 'Errore credenziali Sbagliate';
-            response.sendRedirect("/Errore");
-        }
-
-
-    }
-
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    System.out.println('host:'+request.getHeader('host'));
-        System.out.println('accept_encoding:'+request.getHeader('accept_encoding'));
-        System.out.println('if_none_match:'+request.getHeader('if_none_match'));
-        response.setContentType('text/plain');
-        printWriter Stampa=response.getWriter();
-        Stampa.println('buongiorno Galvani!');
-
-
-    }
-
-    public void destroy() {
+        if(username.equals('Gino') && password.equals('Pasquale')){
+            response.setContentType('text/html');
+            PrintWriter out = response.getWriter();
+            out.println('<html><body><h1>Ciao</h1></body></html>');
+        } else {
+            HttpSession session = request.getSession(create:true);
+            String message = 'Hai sbagliato il login, sfigato....'
+            session.setAttribute(name:'Error', message);
+            response.sendRedirect(location: '/Errore')
     }
 }
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        System.out.println(request.getHeader('host'));
+        System.out.println(request.getHeader('Accept-Encoding'));
+        System.out.println(request.getHeader('If-Nome-Match'));
+        response.setContentType('text/txt');
+        PrintWriter out = response.getWriter();
+}       out.println('buongiorno galvani');
