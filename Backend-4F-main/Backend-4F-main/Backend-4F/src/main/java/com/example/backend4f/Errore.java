@@ -7,6 +7,16 @@ import jakarta.servlet.annotation.*;
 
 @WebServlet(name = "Errore", value = "/Errore")
 public class ErroreServlet extends HttpServlet {
+
+    @Override
+    public void init (){
+
+    }
+    @Override
+    public void destroy(){
+
+    }
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = (String) session.getAttribute(true);
         String Attributo=(String) session.getAttribute('Errore');
