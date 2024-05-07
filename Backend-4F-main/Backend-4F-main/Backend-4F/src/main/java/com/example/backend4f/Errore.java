@@ -6,24 +6,25 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 @WebServlet(name = "Errore", value = "/Errore")
-public class ErroreServlet extends HttpServlet {
-
-    @Override
-    public void init (){
-
+public class Errore extends HttpServlet {
+    private String messaggio;
+    public void init() {
     }
-    @Override
-    public void destroy(){
-
-    }
-
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        HttpSession session = (String) session.getAttribute(true);
-        String Attributo=(String) session.getAttribute('Errore');
-        System.out.println(Attributo);
         response.setContentType("text/html");
+        int Attributo = (int) session.getAttribute("messaggio");
+        System.out.println(messaggio);
         PrintWriter out = response.getWriter();
-        out.println("<html><body><h1>" + Attributo + '</h1></body></html>');
+        out.println("<html><body><h1>" + Attributo + "</h1></body></html>");
+    }
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("text/html");
+        int Attributo = (int) session.getAttribute("messaggio");
+        System.out.println(messaggio);
+        PrintWriter out = response.getWriter();
+        out.println("<html><body><h1>" + Attributo + "</h1></body></html>");
 
+    }
+    public void destroy() {
     }
 }
