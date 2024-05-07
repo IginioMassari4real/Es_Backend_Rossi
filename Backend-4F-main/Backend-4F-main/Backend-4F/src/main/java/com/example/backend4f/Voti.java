@@ -62,7 +62,7 @@ public class Voti extends HttpServlet {
         return grades;
     }
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+        response.sendError(HttpServletResponse.SC_NOT_FOUND);
     }
     public void destroy() {
     }
